@@ -1,0 +1,28 @@
+version: '3.10'
+
+services:
+  web:
+    build: .
+    command: python /code/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    environment:
+      - DB_HOST=db
+      - DB_NAME=dev2db
+      - DB_USER=dev2user
+      - DB_PASS=olu
+    depends_on:
+      - db
+  db:
+    image: postgres:11
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=dev2db
+      - POSTGRES_USER=dev2user
+      - POSTGRES_PASSWORD=olu
+
+volumes:
+  postgres_data:
