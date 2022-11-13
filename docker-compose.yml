@@ -9,6 +9,8 @@ services:
     ports:
       - 8000:8000
     environment:
+      - SECRET_KEY==@-3=oz4ilp@@4!p-h5p5tb_3(k4c2mx&obl+&vf_j-zbg=s0a
+      - DEBUG=1
       - DB_HOST=db
       - DB_NAME=dev2db
       - DB_USER=dev2user
