@@ -2,7 +2,9 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse, resolve
 
-from .forms import CustomUserChangeForm, CustomUserCreationForm
+from .forms import CustomUserCreationForm
+
+from .views import SignupPageView
 
 
 # Create your tests here.
@@ -58,8 +60,8 @@ class SignupPageTests(TestCase):
     def test_signup_view(self):
         view = resolve('/account/signup/')
         self.assertEqual(
-            view.func.__name__
-        )
+            view.func.__name__,
+            SignupPageView.as_view().__name__)
 
 
 class SignupTests(TestCase):
